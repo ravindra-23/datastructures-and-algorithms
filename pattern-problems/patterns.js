@@ -1,132 +1,187 @@
-// Problem Statement: Given an integer N, print the following pattern. for example N=3
-// ***
-// ***
-// ***
+// *****
+// *****
+// *****
+// *****
+// *****
 
-const getPattern = (n) => {
-  for (let i = 0; i < n; i++) {
-    let row = "";
-    for (let j = 0; j < n; j++) {
-      row += "* ";
+const pattern1 = (n) => {
+  for (let row = 1; row <= n; row++) {
+    let star = "";
+    for (let col = 1; col <= n; col++) {
+      star += "* ";
     }
-    console.log(row);
+    console.log(star);
   }
 };
 
-getPattern(5);
+pattern1(5);
 
-// Given an integer N, print the following pattern :
-// Input Format: N = 3
-// Result:
 // *
-// * *
-// * * *
+// **
+// ***
+// ****
+// *****
 
-const trianglePattern = (n) => {
-  for (let i = 0; i < n; i++) {
-    let row = "";
-    for (let j = 0; j < i + 1; j++) {
-      //restrict the inner loop to run only row + 1 times.
-      row += "* ";
+const pattern2 = (n) => {
+  for (let row = 1; row <= n; row++) {
+    let star = "";
+    for (let col = 1; col <= row; col++) {
+      star += "* ";
     }
-    console.log(row);
+    console.log(star);
   }
 };
 
-trianglePattern(5);
+pattern2(5);
 
-// Problem Statement: Given an integer N, print the following pattern :
-// Input Format: N = 3
-// Result:
 // 1
 // 1 2
 // 1 2 3
+// 1 2 3 4
+// 1 2 3 4 5
 
-const triangleNumPattern = (n) => {
-  for (let i = 0; i < n; i++) {
-    let row = "";
-    for (let j = 0; j < i + 1; j++) {
-      row += j + 1;
+const pattern3 = (n) => {
+  for (let row = 1; row <= n; row++) {
+    let num = "";
+    for (let col = 1; col <= row; col++) {
+      num += col;
     }
-    console.log(row);
+    console.log(num);
   }
 };
 
-triangleNumPattern(10);
+pattern3(5);
 
-// Given an integer N, print the following pattern :
-// Input Format: N = 3
-// Result:
 // 1
 // 2 2
 // 3 3 3
+// 4 4 4 4
+// 5 5 5 5 5
 
-const pattern = (n) => {
-  for (let i = 0; i < n; i++) {
-    let row = "";
-    for (let j = 0; j < i + 1; j++) {
-      row += i + 1;
+const pattern4 = (n) => {
+  for (let row = 1; row <= n; row++) {
+    let num = "";
+    for (let col = 1; col <= row; col++) {
+      num += row;
     }
-    console.log(row);
+    console.log(num);
   }
 };
 
-pattern(5);
+pattern4(5);
 
-//Given an integer N, print the following pattern :
-// Input Format: N = 3
-// Result:
-// * * *
-// * *
+// *****
+// ****
+// ***
+// **
 // *
 
-const reverseTrianglePattern = (n) => {
-  for (let i = 0; i < n; i++) {
-    let row = "";
-    for (let j = 0; j < n - i; j++) {
-      //reduce the loop of j by n-i
-      row += "* ";
+const pattern5 = (n) => {
+  for (let row = 1; row <= n; row++) {
+    let star = "";
+    for (let col = 1; col <= n + 1 - row; col++) {
+      star += "* ";
     }
-    console.log(row);
+    console.log(star);
   }
 };
 
-reverseTrianglePattern(5);
+pattern5(5);
 
-// Given an integer N, print the following pattern :
-// Input Format: N = 3
-// Result:
-// 1 2 3
-// 1 2
+// 12345
+// 1234
+// 123
+// 12
 // 1
-const reverseNumTriangle = (n) => {
-  for (let i = 0; i < n; i++) {
-    let row = "";
-    for (let j = 0; j < n - i; j++) {
-      row += j + 1;
+
+const pattern6 = (n) => {
+  for (let row = 1; row <= n; row++) {
+    let num = "";
+    for (let col = 1; col <= n + 1 - row; col++) {
+      num += col;
     }
-    console.log(row);
+    console.log(num);
   }
 };
 
-reverseNumTriangle(5);
+pattern6(5);
 
-const pyramidStart = (n) => {
-  for (let i = 0; i < n; i++) {
-    let row = "";
-    for (let j = 0; j < n - i - 1; j++) {
-      row += " ";
-    }
+//      *
+//     ***
+//    *****
+//   *******
+//  *********
 
-    for (let j = 0; j < 2 * i + 1; j++) {
-      row += "*";
+const pattern7 = (n) => {
+  for (let row = 0; row < n; row++) {
+    let star = "";
+    for (let sp = 0; sp < n - row - 1; sp++) {
+      star += " ";
     }
-
-    for (let j = 0; j < n - i - 1; j++) {
-      row += " ";
+    for (let s = 0; s < 2 * row + 1; s++) {
+      star += "*";
     }
-    console.log(row);
+    for (let sp = 0; sp < n - row - 1; sp++) {
+      star += " ";
+    }
+    console.log(star);
   }
 };
 
-pyramidStart(6);
+pattern7(5);
+
+//  *********
+//   *******
+//    *****
+//     ***
+//      *
+
+const pattern8 = (n) => {
+  for (let row = 0; row < n; row++) {
+    let star = "";
+    for (let sp = 0; sp < (2 * row) / 2; sp++) {
+      star += " ";
+    }
+    for (let s = 0; s < 2 * (n - 1 - row) + 1; s++) {
+      star += "*";
+    }
+    for (let sp = 0; sp < (2 * row) / 2; sp++) {
+      star += " ";
+    }
+    console.log(star);
+  }
+};
+
+pattern8(5);
+
+//   *
+//  ***
+// *****
+// *****
+//  ***
+//   *
+
+const pattern9 = (n) => {
+  pattern7(n);
+  pattern8(n);
+};
+
+pattern9(5);
+
+const pattern10 = (n) => {
+  for (let row = 0; row < n * 2; row++) {
+    let star = "";
+    if (row < n) {
+      for (let col = 0; col < row + 1; col++) {
+        star += "*";
+      }
+    } else {
+      for (let col = 0; col < 2 * n - row; col++) {
+        star += "*";
+      }
+    }
+    console.log(star);
+  }
+};
+
+pattern10(5);
