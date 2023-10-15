@@ -185,3 +185,25 @@ const pattern10 = (n) => {
 };
 
 pattern10(5);
+
+// 1
+// 01
+// 101
+// 0101
+// 10101
+
+const pattern11 = (n) => {
+  for (let row = 0; row < n; row++) {
+    let num = "";
+    for (let col = 0; col < row + 1; col++) {
+      if ((row + col) % 2 == 0) {
+        num += 1;
+      } else {
+        num += 0;
+      }
+    }
+    console.log(num);
+  }
+};
+
+pattern11(5);
