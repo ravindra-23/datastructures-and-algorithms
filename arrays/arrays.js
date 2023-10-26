@@ -163,3 +163,98 @@ console.log("The array after removing duplicates:");
 for (let i = 0; i < k2; i++) {
   console.log(nums2[i]);
 }
+
+// Left Rotate the Array by One
+
+const leftRotate = (arr) => {
+  const firstElement = arr[0];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    arr[i] = arr[i + 1];
+  }
+  arr[arr.length - 1] = firstElement;
+  return arr;
+};
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(leftRotate(arr));
+
+//rotating array of elements by k elements either left or right.
+
+const rotate = (arr, k, direction) => {
+  const n = arr.length;
+
+  let rotated = [];
+  for (let i = 0; i < arr.length; i++) {
+    let newPosition;
+
+    if (direction === "left") {
+      newPosition = (i - k + n) % n;
+    } else if (direction === "right") {
+      newPosition = (i + k) % n;
+    } else {
+      throw new Error("Invalid Direction");
+    }
+    rotated[newPosition] = arr[i];
+  }
+  return rotated;
+};
+
+const numsArr = [1, 2, 3, 4, 5, 6, 7];
+
+console.log(rotate(numsArr, 2, "left"));
+
+// Move all Zeros to the end of the array
+
+//Brute force approach
+
+const zeroArr = [1, 0, 2, 3, 0, 4, 0, 1];
+
+const moveZeros = (arr) => {
+  let nonZeros = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== 0) {
+      nonZeros.push(arr[i]);
+    }
+  }
+  const nz = nonZeros.length;
+
+  for (let i = 0; i < nz; i++) {
+    arr[i] = nonZeros[i];
+  }
+
+  for (let i = nz; i < arr.length; i++) {
+    arr[i] = 0;
+  }
+  return arr;
+};
+
+console.log(moveZeros(zeroArr));
+
+//Method 2
+
+const moveZeros2 = (arr) => {
+  const nonZeros = arr.filter((num) => num > 0);
+  const zeros = arr.filter((num) => num === 0);
+  console.log([...nonZeros, ...zeros]);
+};
+
+console.log(moveZeros2(zeroArr));
+
+//Optimal Approach
+
+const moveZerosOptimal = (arr) => {
+  let left = 0; //pointer for nonzero element
+  let right = 0; //poiinter for all elements
+
+  while (right < arr.length) {
+    if (arr[right] !== 0) {
+      [arr[left], arr[right]] = [arr[right], arr[left]];
+      left++;
+    }
+    right++;
+  }
+  return arr;
+};
+
+console.log(moveZerosOptimal([5, 2, 0, 1, 0, 6, 8, 0]));
