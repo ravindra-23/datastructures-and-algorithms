@@ -258,3 +258,98 @@ const moveZerosOptimal = (arr) => {
 };
 
 console.log(moveZerosOptimal([5, 2, 0, 1, 0, 6, 8, 0]));
+
+// Linear Search
+
+const linearSearch = (arr, num) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === num) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+//Not optimal
+
+const linearSearch2 = (arr, num) => {
+  let index = -1;
+  arr.forEach((el, i) => {
+    if (el === num) {
+      index = i;
+    }
+  });
+  return index;
+};
+
+console.log(linearSearch([5, 10, 7, 6, 9], 7));
+console.log(linearSearch2([5, 10, 7, 6, 1], 5));
+
+// Find Union of two arrays
+
+const findUnion = (arr1, arr2) => {
+  let set = new Set();
+  let union = [];
+
+  for (let num of arr1) {
+    set.add(num);
+  }
+  for (let num of arr2) {
+    set.add(num);
+  }
+
+  for (let num of set) {
+    union.push(num);
+  }
+  return union;
+};
+
+const array1 = [1, 2, 3, 4, 5];
+const array2 = [2, 3, 4, 4, 5, 7];
+// console.log(findUnion(array1, array2));
+
+// Optimal
+
+const union = (arr1, arr2) => {
+  let union = [];
+  let i = 0; //pointer for array1
+  let j = 0; //pointer for array2
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      if (union[union.length - 1] !== arr1[i]) {
+        union.push(arr1[i]);
+      }
+      i++;
+    } else if (arr1[i] > arr2[j]) {
+      if (union[union.length - 1] !== arr2[j]) {
+        union.push(arr2[j]);
+      }
+      j++;
+    } else {
+      //this else runs when arr1[i] === arr2[j]
+      if (union[union.length - 1] !== arr1[i]) {
+        union.push(arr1[i]);
+      }
+      i++;
+    }
+  }
+
+  while (i < arr1.length) {
+    if (union[union.length - 1] !== arr1[i]) {
+      union.push(arr1[i]);
+    }
+    i++;
+  }
+
+  while (j < arr2[j]) {
+    if (union[union.length - 1] !== arr2[j]) {
+      union.push(arr2[j]);
+    }
+    j++;
+  }
+
+  return union;
+};
+
+console.log("Union:", union(array1, array2));
