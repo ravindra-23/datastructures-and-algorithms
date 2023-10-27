@@ -353,3 +353,18 @@ const union = (arr1, arr2) => {
 };
 
 console.log("Union:", union(array1, array2));
+
+// Find the missing element
+
+const findElement = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== i + 1) {
+      return `Missing element is: ${i + 1}`;
+    }
+  }
+  return "No missing elements";
+};
+
+console.log(findElement([1, 2, 4, 5]));
+
+//
