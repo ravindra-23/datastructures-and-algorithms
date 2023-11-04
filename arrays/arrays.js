@@ -367,4 +367,44 @@ const findElement = (arr) => {
 
 console.log(findElement([1, 2, 4, 5]));
 
-//
+// Count Maximum Consecutive One’s
+// Input: prices = {1, 1, 0, 1, 1, 1}
+// Output: 3
+
+const consecutiveOne = (arr) => {
+  let count = 0;
+  let maxCount = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 1) {
+      count++;
+    } else {
+      maxCount = Math.max(maxCount, count);
+      count = 0;
+    }
+  }
+  maxCount = Math.max(maxCount, count);
+  return `Maximus number on One's: ${maxCount}`;
+};
+
+console.log(consecutiveOne([1, 0, 1, 1, 0, 1, 1, 1]));
+
+// Find the number that appears once
+
+const appearedOnce = (arr) => {
+  for (let i = 1; i < arr.length; i++) {
+    let num = arr[i];
+    let count = 0;
+
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] === num) {
+        count++;
+      }
+    }
+    if (count === 1) {
+      return num;
+    }
+  }
+  return -1;
+};
+
+console.log(appearedOnce([2, 7, 2, 5, 7]));
